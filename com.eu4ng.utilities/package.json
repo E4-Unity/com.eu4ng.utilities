@@ -1,0 +1,12 @@
+{
+    "name": "com.eu4ng.utilities",
+    "displayName": "E4 Utilities",
+    "version": "0.0.0",
+    "unity": "2021.3",
+    "author": {
+        "name": "Eu4ng",
+        "email": "eu4ng97@gmail.com",
+        "url": "https://github.com/Eu4ng"
+    },
+    "description": "Utilities"
+}
