@@ -25,7 +25,7 @@ namespace E4.Utilities
     // TODO JSON 보안
     /// <summary>
     /// - 데이터 저장, 불러오기, 삭제 기능을 `정적 메서드` 로 제공
-    /// - 저장할 데이터 클래스에 `object` 인터페이스 구현 필요
+    /// - 저장할 데이터 클래스에 `ISavable` 인터페이스 구현 필요
     /// - 데이터 저장 경로는 `PersistentDataPath/DataManager/[데이터 클래스 이름].json` 입니다.
     /// - `SaveData` 메서드 호출 시 데이터가 바로 저장되는 것이 아니라 `DataToSave` 에 등록되고, `SaveAll` 메서드 호출 시 실제 데이터 저장이 이루어집니다.
     /// - 기본적으로 애플리케이션이 정지되거나 종료되는 경우 `SaveAll` 메서드가 자동적으로 호출되며, 원하는 타이밍에 직접 호출하는 것 역시 가능합니다.
@@ -102,7 +102,7 @@ namespace E4.Utilities
         /// <summary>
         /// 저장이 필요한 데이터 표기
         /// </summary>
-        public static void SaveData<T>() where T : class, new()
+        public static void SaveData<T>() where T : class, ISavable, new()
         {
             // 저장할 데이터 목록 확인
             var dataType = typeof(T);
@@ -115,7 +115,7 @@ namespace E4.Utilities
         /// <summary>
         /// 데이터 즉시 저장 (비동기 방식)
         /// </summary>
-        public static void SaveDataImmediately<T>() where T : class, new()
+        public static void SaveDataImmediately<T>() where T : class, ISavable, new()
         {
             var dataType = typeof(T);
 
@@ -161,7 +161,7 @@ namespace E4.Utilities
         /// 1. 데이터 로딩 작업이 진행중인 경우, 데이터 로딩 작업이 완료될 때까지 대기한 후 로드된 데이터를 반환합니다.
         /// 2. LoadDataAsync 메서드를 호출한 후 완료될 때까지 대기합니다.
         /// </summary>
-        public static T LoadData<T>() where T : class, new()
+        public static T LoadData<T>() where T : class, ISavable, new()
         {
             var dataType = typeof(T);
 
@@ -188,7 +188,7 @@ namespace E4.Utilities
         /// 2. 저장된 데이터 파일이 존재하지 않거나 올바르지 않은 데이터인 경우 기본 생성자로 생성된 데이터를 반환합니다.
         /// 3. 저장된 데이터 파일로부터 데이터를 불러옵니다.
         /// </summary>
-        public static Task<T> LoadDataAsync<T>() where T : class, new()
+        public static Task<T> LoadDataAsync<T>() where T : class, ISavable, new()
         {
             var dataType = typeof(T);
 
@@ -240,7 +240,7 @@ namespace E4.Utilities
         /// <summary>
         /// 데이터를 언로드합니다. 저장이 필요한 경우 자동으로 저장합니다.
         /// </summary>
-        public static void UnloadData<T>() where T : class, new()
+        public static void UnloadData<T>() where T : class, ISavable, new()
         {
             var dataType = typeof(T);
 
@@ -258,8 +258,10 @@ namespace E4.Utilities
         /// <summary>
         /// 특정 데이터 파일 삭제
         /// </summary>
-        public static void DeleteData(Type dataType)
+        public static void DeleteData<T>() where T : class, ISavable, new()
         {
+            var dataType = typeof(T);
+
             // 저장된 데이터 파일이 존재하는지 확인
             var path = Path.Combine(m_SaveFolderPath, GetFileName(dataType));
             if (!File.Exists(path)) return;
