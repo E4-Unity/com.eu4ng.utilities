@@ -8,5 +8,12 @@
         "email": "eu4ng97@gmail.com",
         "url": "https://github.com/Eu4ng"
     },
-    "description": "Utilities"
+    "description": "Utilities",
+    "samples": [
+        {
+            "displayName": "Data Manager Sample",
+            "description": "DataManager 사용 예제",
+            "path": "Samples~/DataManager"
+        }
+    ]
 }
