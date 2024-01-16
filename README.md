@@ -2,8 +2,12 @@
 
 ## 설치 방법
 
-1. `Windows` > `Package Manager` > `Add package from git URL...`
-2. `https://github.com/E4-Unity/com.eu4ng.utilities.git?path=/com.eu4ng.utilities#v0.1.0` 붙여넣기
+- [Git URL을 통한 설치 - Unity 매뉴얼](https://docs.unity3d.com/kr/2021.3/Manual/upm-ui-giturl.html)
+- [Git 종속성 - Unity 매뉴얼](https://docs.unity3d.com/kr/2021.3/Manual/upm-git.html)
+
+```
+https://github.com/E4-Unity/com.eu4ng.utilities.git?path=/package
+```
 
 ## 구성
 
