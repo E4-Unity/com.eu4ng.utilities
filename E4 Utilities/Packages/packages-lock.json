@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.eu4ng.utilities": {
-      "version": "file:../../../com.eu4ng.utilities",
+      "version": "file:../../package",
       "depth": 0,
       "source": "local",
       "dependencies": {}
