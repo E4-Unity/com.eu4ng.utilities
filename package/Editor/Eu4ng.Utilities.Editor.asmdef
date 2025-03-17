@@ -1,8 +1,12 @@
 {
-    "name": "Eu4ng.Utilities",
-    "rootNamespace": "Eu4ng.Utilities",
-    "references": [],
-    "includePlatforms": [],
+    "name": "Eu4ng.Utilities.Editor",
+    "rootNamespace": "Eu4ng.Utilities.Editor",
+    "references": [
+        "GUID:6ebc61a948085e64fb3662bdc27fc9fb"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
